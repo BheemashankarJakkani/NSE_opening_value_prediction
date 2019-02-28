@@ -61,7 +61,7 @@ void linear_reg()
   printf("5/Feb/2019:%f\n",p);
   
   
-  ftr1=fopen("linear_reg.txt","w");
+  ftr1=fopen("linear_reg.xg","w");
   fprintf(ftr1,"TitleText: NSE_predictions_Linear Regression(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
   for(i=1;i<32;i++)
   {
@@ -107,7 +107,7 @@ void gradientDescent() {
   p = m1*28+b1;
   printf("5/Feb/2019:%f\n",p);
   
-  ftr2=fopen("gradient_decent.txt","w");
+  ftr2=fopen("gradient_decent.xg","w");
   fprintf(ftr2,"TitleText: NSE_predictions_Gradient_Decent(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
   for(i=1;i<32;i++)
   {
