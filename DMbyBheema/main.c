@@ -10,10 +10,9 @@ void gradientDescent();
 int sizex,sizey;
 float p;
 int n=sizeof(x)/sizeof(float);
+FILE *ftr1,*ftr2;
 int main()
 {
-
-  printf("Enter No of values \n");
   sizex=sizeof(x)/sizeof(float);
   sizey=sizeof(y)/sizeof(float);
   printf("size of x=%d and  y=%d\n",sizex,sizey);
@@ -44,7 +43,7 @@ void linear_reg()
 
    m = num / den;
    b = ymean - (m * xmean);
-
+  printf("\n---------------------------------------------------------------------\n");
   printf("The Line Equation after the linear regression is y=%.3fx+%.3f \n",m,b);
   printf("\nLinear Regression slope and intercept are:\n");
   printf("\nSlope(m):%f",m);
@@ -60,6 +59,15 @@ void linear_reg()
   printf("4/Feb/2019:%f\n",p);
   p = m*28+b;
   printf("5/Feb/2019:%f\n",p);
+  
+  
+  ftr1=fopen("linear_reg.txt","w");
+  fprintf(ftr1,"TitleText: NSE_predictions_Linear Regression(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
+  for(i=1;i<32;i++)
+  {
+   fprintf(ftr1,"%d\t\t %f\n",i,(m*i+b));
+  }
+  fclose(ftr1);
 }
 
 
@@ -82,6 +90,7 @@ void gradientDescent() {
     b1 += (learning_rate*error);
     }
   }
+  printf("\n-------------------------------------------------------------------------------------\n");
   printf("\nThe Line Equation after Gradient decent is y=%.3fx+%.3f \n",m1,b1);
   printf("\nGradient decent slope and intercept are:\n");
   printf("\nSlope(m):%f",m1);
@@ -97,5 +106,12 @@ void gradientDescent() {
   printf("4/Feb/2019:%f\n",p);
   p = m1*28+b1;
   printf("5/Feb/2019:%f\n",p);
-
+  
+  ftr2=fopen("gradient_decent.txt","w");
+  fprintf(ftr2,"TitleText: NSE_predictions_Gradient_Decent(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
+  for(i=1;i<32;i++)
+  {
+   fprintf(ftr2,"%d\t\t %f\n",i,(m1*i+b1));
+  }
+  fclose(ftr2);
 }
