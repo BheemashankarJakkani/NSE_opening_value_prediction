@@ -6,4 +6,8 @@ Execute the C code
  ./a.out
  
  #Then two file will be Created
-    Execute the GNUPLOT command
+    Execute the GNUPLOT command 
+    OR
+    By executing 
+    xgraph linear_reg.xg
+    xgraph gradient_decent.xg
