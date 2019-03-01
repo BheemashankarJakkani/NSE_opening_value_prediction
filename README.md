@@ -9,5 +9,7 @@ Execute the C code
     Execute the GNUPLOT command 
     OR
     By executing 
-    xgraph linear_reg.xg
-    xgraph gradient_decent.xg
+   
+   xgraph linear_reg.xg
+   
+   xgraph gradient_decent.xg
