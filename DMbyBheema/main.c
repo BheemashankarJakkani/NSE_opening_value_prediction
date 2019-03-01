@@ -10,11 +10,17 @@ void gradientDescent();
 int sizex,sizey;
 float p;
 int n=sizeof(x)/sizeof(float);
-FILE *ftr1,*ftr2;
+FILE *ftr1,*ftr2,*ftr3;
 int main()
 {
   sizex=sizeof(x)/sizeof(float);
   sizey=sizeof(y)/sizeof(float);
+  ftr3=fopen("original.xg","w");
+  for(i=0;i<n;i++)
+  {
+   fprintf(ftr3,"%.1f\t\t %.4f\n",x[i],y[i]);
+  }
+  fclose(ftr3);
   printf("size of x=%d and  y=%d\n",sizex,sizey);
   linear_reg();
   gradientDescent();
@@ -63,6 +69,12 @@ void linear_reg()
   
   ftr1=fopen("linear_reg.xg","w");
   fprintf(ftr1,"TitleText: NSE_predictions_Linear Regression(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
+  fprintf(ftr1,"\"Original Data\"\n");
+  for(i=0;i<n;i++)
+  {
+   fprintf(ftr1,"%d\t\t %.4f\n",(i+1),y[i]);
+  }
+  fprintf(ftr1,"\n\"Fit Line\"\n");
   for(i=1;i<32;i++)
   {
    fprintf(ftr1,"%d\t\t %f\n",i,(m*i+b));
@@ -109,9 +121,18 @@ void gradientDescent() {
   
   ftr2=fopen("gradient_decent.xg","w");
   fprintf(ftr2,"TitleText: NSE_predictions_Gradient_Decent(Day vs NSE_Opening)\nXUnitText: Days\nYUnitText: Opening_Value\n\n\n");
+
+  fprintf(ftr2,"\"Original Data\"\n");
+  for(i=0;i<n;i++)
+  {
+   fprintf(ftr2,"%d\t\t %.4f\n",(i+1),y[i]);
+  }
+  fprintf(ftr2,"\n\"Fit Line\"\n");
   for(i=1;i<32;i++)
   {
    fprintf(ftr2,"%d\t\t %f\n",i,(m1*i+b1));
   }
   fclose(ftr2);
+
+  
 }
